@@ -35,15 +35,39 @@
 
   # Veryfy that DMAP is functional inside the conda env methylation
   diffmeth # Help of software should be displayed
-
 ```
 
-3. Install additional software required (inside the methylation env)
+3. Install additional software required (inside the methylation env):
+
 ```bash
   mamba install bioconda::bowtie2 -y
   mamba install bioconda::samtools -y
   mamba install bioconda::bismark -y
   mamba install bioconda::fastqc -y
 ```
+
+4. Install bsmapz (from source code)
+
+```bash
+  mamba create -n bsmapz-src -c conda-forge -c bioconda \
+  make gcc gxx zlib samtools -y
+  conda activate bsmapz-src
+
+  git clone https://github.com/zyndagj/BSMAPz.git
+  cd BSMAPz
+  make bsmapz             # produces ./bsmapz
+  ./bsmapz -h
+
+  # make it globally reachable
+  mkdir -p ~/local/bin
+  cp ./bsmapz ~/local/bin/
+  echo 'export PATH="$HOME/local/bin:$PATH"' >> ~/.bashrc
+  hash -r
+```
+
+5. Prepare genome (Homo sapiens in this case).
+
+
+
 
 Paper describing [Bismark](https://academic.oup.com/bioinformatics/article/27/11/1571/216956?login=true) 
