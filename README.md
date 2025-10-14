@@ -38,7 +38,6 @@
 ```
 
 3. Install additional software required (inside the methylation env):
-
 ```bash
   mamba install bioconda::bowtie2 -y
   mamba install bioconda::samtools -y
@@ -47,7 +46,6 @@
 ```
 
 4. Install bsmapz (from source code)
-
 ```bash
   mamba create -n bsmapz-src -c conda-forge -c bioconda \
   make gcc gxx zlib samtools -y
@@ -66,7 +64,18 @@
 ```
 
 5. Prepare genome (Homo sapiens in this case).
+```bash
+  # The genome used here was UCSC hg38, which can be dowloaded with the following command:
+  # wget ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+  # And the corresponding GTF (annotation) file:
+  # wget wget ftp://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.knownGene.gtf.gz
+  # gunzip hg38.fa.gz hg38.knownGene.gtf.gz
 
+  # Run bismark_genome_preparation which was installed as described in numeral 3.
+  
+  sbatch 01_genome_prep.sbatch <PREFIX>
+
+```
 
 
 
