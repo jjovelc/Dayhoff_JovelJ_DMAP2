@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=12
 #SBATCH --time=7-00:00:00
-#SBATCH --mem=8G
+#SBATCH --mem=64G
 
 ####### Handle user-defined prefix #########################
 
