@@ -6,7 +6,7 @@
 
 1. Clone the github repo: 
 ```bash
-  git clone git@github.com:jjovelc/Dayhoff_JovelJ_DMAP2.git
+  git clone git@github.com:peterstockwell/DMAP.git
   cd DMAP/src/
   make
 ```
