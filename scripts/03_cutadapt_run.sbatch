@@ -33,8 +33,8 @@ echo "Job started on: $(date)"
 eval "$(conda shell.bash hook)"
 conda activate methylation
 
-R1="$1"
-R2="$2"
+R1="$2"
+R2="$3"
 
 # Strip path and any fastq extension (case-insensitive, handles .gz)
 BASE1="$(basename "$R1" | sed -E 's/\.(fastq|fq|FASTQ|FQ)(\.gz)?$//')"
@@ -43,14 +43,8 @@ BASE2="$(basename "$R2" | sed -E 's/\.(fastq|fq|FASTQ|FQ)(\.gz)?$//')"
 OUT1="${BASE1}_trimmed.fastq"
 OUT2="${BASE2}_trimmed.fastq"
 
-cutadapt \
-  -a TGGAATTCTCGGGTGCCAAGG -A GATCGTCGGACTGTAGAACTCTGAAC \
-  -q 30 \                       # trim 3′ ends to Q30 on both reads
-  --nextseq-trim=20 \           # keep this for poly-G artifacts
-  --overlap 3 --error-rate 0.2 \
-  --minimum-length 15 --pair-filter=any \
-  -o "$OUT1" -p "$OUT2" \
-   "$R1" "$R2"
+
+cutadapt -a TGGAATTCTCGGGTGCCAAGG -A GATCGTCGGACTGTAGAACTCTGAAC -q 30 --nextseq-trim=20 --overlap 3 --error-rate 0.2 --minimum-length 50 --pair-filter=any -o "$OUT1" -p "$OUT2" "$R1" "$R2"
 
 
 end_time=$(date +%s)
