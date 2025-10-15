@@ -77,6 +77,20 @@
 
 ```
 
+6. Inspect quality
 
+```bash
+  # With the configuration of the trimming script (next step),
+  # it is not necesary to inspect these results. They are
+  # generated for troubleshooring purposes
+  sbatch 02_fastqc_run.sbatch <PREFIX>
+```
+
+7. Trim low quality bases and poly-G tails
+```bash
+  # Quality trimming using these adapters -a TGGAATTCTCGGGTGCCAAGG -A GATCGTCGGACTGTAGAACTCTGAAC
+  # (canonical adapters in Illumina libraries) modify that if different adapters used
+  sbatch 03_cutadapt_run.sbatch <PREFIX> <END1> <END2>
+```
 
 Paper describing [Bismark](https://academic.oup.com/bioinformatics/article/27/11/1571/216956?login=true) 
