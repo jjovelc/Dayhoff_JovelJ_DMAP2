@@ -83,7 +83,6 @@ bismark --bowtie2 \
   -1 "$R1" \
   -2 "$R2" \
   -p 4 \
-  --parallel 2 \
   --basename "$SAMPLE" \
   --output_dir "$OUT" \
   --temp_dir "$TMP"
