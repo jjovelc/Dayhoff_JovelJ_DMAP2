@@ -9,6 +9,7 @@
 set -euo pipefail
 
 ########################## USAGE / ARGS ##########################
+# Use it at your own risk
 # Usage: sbatch 05_call-methylation_run.sbatch PREFIX R1.fastq.gz R2.fastq.gz /path/to/genome_folder [--non_directional|--pbat]
 # Example:
 #   sbatch 05_call-methylation_run.sbatch EN01 R1_trimmed.fastq.gz R2_trimmed_noG.fastq.gz /ref/hg38
