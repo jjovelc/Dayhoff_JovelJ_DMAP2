@@ -102,3 +102,5 @@ duration=$((end_time - start_time))
 printf "== Finished: %s ==\n" "$(date)"
 printf "Walltime: %02dh %02dm %02ds\n" $((duration/3600)) $(((duration%3600)/60)) $((duration%60))
 
+printf "All completed, please check results at:\n"
+printf "$OUT\n"
